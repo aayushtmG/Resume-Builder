@@ -1,6 +1,6 @@
 # RESUME BUILDER
 
-A project from theodinproject.com
+A project from [The Odin Project](https://theodingproject.com)
 
 Tech used:
 
