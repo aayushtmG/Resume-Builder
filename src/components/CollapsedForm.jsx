@@ -1,5 +1,5 @@
 import { AddFormButton } from "./AddFormButton"
-export default function CollapsedForm({ list, setForm, toggleForm, title }) {
+export default function CollapsedForm({ list, setForm, title, addForm }) {
   return (
     <div className="collapsed-form">
       {list.map((e, index) => (
@@ -9,7 +9,7 @@ export default function CollapsedForm({ list, setForm, toggleForm, title }) {
           </button>
         </li>
       ))}
-      <AddFormButton title={title} onClick={toggleForm}></AddFormButton>
+      <AddFormButton title={title} onClick={addForm}></AddFormButton>
     </div>
   )
 }

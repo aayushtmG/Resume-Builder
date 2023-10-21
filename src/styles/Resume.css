@@ -2,7 +2,6 @@
   flex-grow: 1;
 }
 .resume-container {
-  height: 100vh;
   background-color: white;
   border-radius: 10px;
   display: flex;

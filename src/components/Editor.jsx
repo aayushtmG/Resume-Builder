@@ -1,5 +1,4 @@
 import "../styles/Editor.css"
-
 import GeneralInformationForm from "./generalInformation/GeneralInformationForm"
 import EducationForm from "./education/EducationForm"
 import ExperienceForm from "./experience/ExperienceForm"

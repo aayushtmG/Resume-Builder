@@ -3,11 +3,9 @@ import { faBriefcase, faChevronDown } from "@fortawesome/free-solid-svg-icons"
 import FormButton from "../FormButton"
 import { useState } from "react"
 import CollapsedForm from "../CollapsedForm"
-
 export default function ExperienceForm({ list, onChange }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [formId, setFormId] = useState(0)
-  console.log(list)
   const {
     company,
     position,
@@ -22,6 +20,13 @@ export default function ExperienceForm({ list, onChange }) {
   const setForm = (id) => {
     setFormId(id)
     toggleForm()
+  }
+  const addForm = () => {
+    list.push({})
+    setForm(list.length - 1)
+  }
+  function deleteForm() {
+    alert("Deleted")
   }
   return (
     <div>
@@ -42,10 +47,10 @@ export default function ExperienceForm({ list, onChange }) {
       {isFormOpen ? (
         <form className="form" data-id={formId}>
           <div className="input-group">
-            <label htmlFor="company">School</label>
+            <label htmlFor="company">Experience</label>
             <input
               type="text"
-              placeholder="Enter school/university"
+              placeholder="Enter company name"
               id="company"
               value={company}
               onChange={onChange}
@@ -55,7 +60,7 @@ export default function ExperienceForm({ list, onChange }) {
             <label htmlFor="position">Position</label>
             <input
               type="text"
-              placeholder="Enter degree/university"
+              placeholder="Enter position"
               id="position"
               onChange={onChange}
               value={position}
@@ -85,7 +90,7 @@ export default function ExperienceForm({ list, onChange }) {
             <label htmlFor="experienceLocation">Location</label>
             <input
               type="text"
-              placeholder="Enter location/university"
+              placeholder="Enter location"
               id="experienceLocation"
               onChange={onChange}
               value={experienceLocation}
@@ -95,19 +100,22 @@ export default function ExperienceForm({ list, onChange }) {
             <label htmlFor="description">Description</label>
             <input
               type="text"
-              placeholder="Enter location/university"
+              placeholder="Enter description"
               id="description"
               onChange={onChange}
               value={description}
             />
           </div>
-          <FormButton toggleForm={toggleForm}></FormButton>
+          <FormButton
+            toggleForm={toggleForm}
+            deleteForm={deleteForm}
+          ></FormButton>
         </form>
       ) : (
         <CollapsedForm
           list={list}
           setForm={setForm}
-          toggleForm={toggleForm}
+          addForm={addForm}
         ></CollapsedForm>
       )}
     </div>
