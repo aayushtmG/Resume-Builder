@@ -6,6 +6,8 @@ import CollapsedForm from "../CollapsedForm"
 export default function ExperienceForm({ list, onChange }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [formId, setFormId] = useState(0)
+  const [newForm, setNewForm] = useState(false)
+  const [prevState, setPrevState] = useState({})
   const {
     company,
     position,
@@ -14,6 +16,7 @@ export default function ExperienceForm({ list, onChange }) {
     experienceLocation,
     description,
   } = list[formId]
+
   const toggleForm = () => {
     setIsFormOpen(!isFormOpen)
   }
@@ -21,11 +24,22 @@ export default function ExperienceForm({ list, onChange }) {
     setFormId(id)
     toggleForm()
   }
+  const cancelForm = () => {
+    toggleForm()
+    if (newForm) {
+      console.log("Poping the new element")
+      setFormId(0)
+      list.pop()
+    } else {
+      alert("It was an existing form")
+    }
+  }
   const addForm = () => {
     list.push({})
     setForm(list.length - 1)
+    setNewForm(true)
   }
-  function deleteForm() {
+  const deleteForm = () => {
     alert("Deleted")
   }
   return (
@@ -108,6 +122,7 @@ export default function ExperienceForm({ list, onChange }) {
           </div>
           <FormButton
             toggleForm={toggleForm}
+            cancelForm={cancelForm}
             deleteForm={deleteForm}
           ></FormButton>
         </form>
@@ -116,6 +131,7 @@ export default function ExperienceForm({ list, onChange }) {
           list={list}
           setForm={setForm}
           addForm={addForm}
+          setNewForm={setNewForm}
         ></CollapsedForm>
       )}
     </div>

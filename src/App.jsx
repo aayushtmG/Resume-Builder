@@ -55,6 +55,8 @@ function App() {
               educationInputHandler={educationInputHandler}
               experienceList={experience}
               experienceInputHandler={experienceInputHandler}
+              setEducation={setEducation}
+              setExperience={setExperience}
             />
           ) : (
             <CustomizeEditor />
