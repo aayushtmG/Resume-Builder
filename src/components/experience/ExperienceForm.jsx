@@ -3,11 +3,11 @@ import { faBriefcase, faChevronDown } from "@fortawesome/free-solid-svg-icons"
 import FormButton from "../FormButton"
 import { useState } from "react"
 import CollapsedForm from "../CollapsedForm"
-export default function ExperienceForm({ list, onChange }) {
+export default function ExperienceForm({ list, onChange, setList }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [formId, setFormId] = useState(0)
   const [newForm, setNewForm] = useState(false)
-  const [prevState, setPrevState] = useState({})
+  const [isListEmpty, setIsListEmpty] = useState(false)
   const {
     company,
     position,
@@ -16,7 +16,6 @@ export default function ExperienceForm({ list, onChange }) {
     experienceLocation,
     description,
   } = list[formId]
-
   const toggleForm = () => {
     setIsFormOpen(!isFormOpen)
   }
@@ -24,14 +23,14 @@ export default function ExperienceForm({ list, onChange }) {
     setFormId(id)
     toggleForm()
   }
+
   const cancelForm = () => {
-    toggleForm()
+    setForm(0)
     if (newForm) {
-      console.log("Poping the new element")
-      setFormId(0)
       list.pop()
+      setList([...list])
     } else {
-      alert("It was an existing form")
+      toggleForm()
     }
   }
   const addForm = () => {
@@ -39,8 +38,19 @@ export default function ExperienceForm({ list, onChange }) {
     setForm(list.length - 1)
     setNewForm(true)
   }
+  const saveForm = (e) => {
+    const id = e.target.closest(".form").dataset.id
+    if (list[id]["company"]) {
+      toggleForm()
+    } else {
+      cancelForm()
+    }
+  }
   const deleteForm = () => {
-    alert("Deleted")
+    list.pop()
+
+    setList([...list])
+    toggleForm()
   }
   return (
     <div>
@@ -121,7 +131,7 @@ export default function ExperienceForm({ list, onChange }) {
             />
           </div>
           <FormButton
-            toggleForm={toggleForm}
+            saveForm={saveForm}
             cancelForm={cancelForm}
             deleteForm={deleteForm}
           ></FormButton>
@@ -132,6 +142,7 @@ export default function ExperienceForm({ list, onChange }) {
           setForm={setForm}
           addForm={addForm}
           setNewForm={setNewForm}
+          isListEmpty={isListEmpty}
         ></CollapsedForm>
       )}
     </div>

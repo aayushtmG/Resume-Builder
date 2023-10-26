@@ -1,6 +1,6 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import { faTrash } from "@fortawesome/free-solid-svg-icons"
-function FormButton({ toggleForm, cancelForm, deleteForm }) {
+function FormButton({ saveForm, cancelForm, deleteForm }) {
   return (
     <div className="btn-group">
       <button className={`form-btn delete`} type="button" onClick={deleteForm}>
@@ -15,7 +15,7 @@ function FormButton({ toggleForm, cancelForm, deleteForm }) {
         >
           <p>Cancel</p>
         </button>
-        <button className={`form-btn save`} type="button" onClick={toggleForm}>
+        <button className={`form-btn save`} type="button" onClick={saveForm}>
           <p>Save</p>
         </button>
       </div>

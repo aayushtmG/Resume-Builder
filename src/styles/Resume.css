@@ -64,3 +64,6 @@
 .display-title {
   margin-bottom: 4px;
 }
+.right-block {
+  min-width: 150px;
+}

@@ -7,14 +7,40 @@ import CollapsedForm from "../CollapsedForm"
 export default function EducationForm({ list, onChange }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [formId, setFormId] = useState(0)
+  const [newForm, setNewForm] = useState(false)
   const { school, degree, educationLocation, educationEnd, educationStart } =
     list[formId]
   const toggleForm = () => {
     setIsFormOpen(!isFormOpen)
   }
+
   const setForm = (id) => {
     setFormId(id)
     toggleForm()
+  }
+
+  const cancelForm = () => {
+    setForm(0)
+    if (newForm) {
+      list.pop()
+      setList([...list])
+    }
+  }
+  const addForm = () => {
+    list.push({})
+    setForm(list.length - 1)
+    setNewForm(true)
+  }
+  const saveForm = (e) => {
+    const id = e.target.closest(".form").dataset.id
+    if (list[id]["school"]) {
+      toggleForm()
+    } else {
+      cancelForm()
+    }
+  }
+  const deleteForm = () => {
+    alert("Deleted")
   }
   return (
     <div>
@@ -84,14 +110,19 @@ export default function EducationForm({ list, onChange }) {
               value={educationLocation}
             />
           </div>
-          <FormButton toggleForm={toggleForm}></FormButton>
+          <FormButton
+            saveForm={saveForm}
+            cancelForm={cancelForm}
+            deleteForm={deleteForm}
+          ></FormButton>
         </form>
       ) : (
         <CollapsedForm
           list={list}
           title={"Education"}
           setForm={setForm}
-          toggleForm={toggleForm}
+          setNewForm={setNewForm}
+          addForm={addForm}
         ></CollapsedForm>
       )}
     </div>

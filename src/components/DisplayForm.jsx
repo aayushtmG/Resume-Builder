@@ -1,3 +1,3 @@
-export default function DisplayForm({ Form, list, inputHandler }) {
-  return <Form list={list} onChange={inputHandler}></Form>
+export default function DisplayForm({ Form, list, setList, inputHandler }) {
+  return <Form list={list} setList={setList} onChange={inputHandler}></Form>
 }

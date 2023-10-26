@@ -10,6 +10,8 @@ function Editor({
   educationInputHandler,
   experienceList,
   experienceInputHandler,
+  setExperience,
+  setEducation,
 }) {
   return (
     <div className="editor-container">
@@ -21,11 +23,13 @@ function Editor({
         Form={EducationForm}
         list={educationList}
         inputHandler={educationInputHandler}
+        setList={setEducation}
       ></DisplayForm>
       <DisplayForm
         Form={ExperienceForm}
         list={experienceList}
         inputHandler={experienceInputHandler}
+        setList={setExperience}
       ></DisplayForm>
     </div>
   )
