@@ -15,7 +15,7 @@ export default function ExperienceForm({ list, onChange, setList }) {
     experienceEnd,
     experienceLocation,
     description,
-  } = list[formId]
+  } = list[formId] || {}
   const toggleForm = () => {
     setIsFormOpen(!isFormOpen)
   }
@@ -46,11 +46,11 @@ export default function ExperienceForm({ list, onChange, setList }) {
       cancelForm()
     }
   }
-  const deleteForm = () => {
-    list.pop()
-
+  const deleteForm = (e) => {
+    const target = e.target.closest("form").dataset.id
+    list.splice(target, 1)
     setList([...list])
-    toggleForm()
+    setForm(0)
   }
   return (
     <div>

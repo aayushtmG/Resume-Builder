@@ -14,7 +14,6 @@ export default function CollapsedForm({
   const available = list.map((e, index) => (
     <li>
       <button id={index} onClick={handleItems}>
-        {/* {title == "Education" ? e.school : e.company } */}
         {title == "Education" ? e.school : e.company}
       </button>
     </li>

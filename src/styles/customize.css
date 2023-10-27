@@ -1,0 +1,46 @@
+.layout-container {
+  display: flex;
+  justify-content: center;
+  flex-direction: row;
+  gap: 20px;
+}
+.layout-btn {
+  width: 80px;
+  height: 80px;
+  background-color: var(--color-one);
+  border-radius: 8px;
+  cursor: pointer;
+  padding: 2px;
+  outline: none;
+  border: none;
+  display: flex;
+}
+
+.layout-btn:hover {
+  box-shadow: 0 0 2px rgb(0, 0, 0, 0.5);
+}
+.layout-btn.vsplit-invert {
+  display: block;
+}
+.layout-btn.vsplit-invert .highlight {
+  float: right;
+  border-radius: 0 8px 8px 0;
+}
+.layout-btn.default .highlight {
+  width: 100%;
+  height: 50%;
+  background-color: blue;
+  border-radius: 8px 8px 0 0;
+}
+.vsplit .highlight {
+  width: 50%;
+  height: 100%;
+  background-color: blue;
+  border-radius: 8px 0 0 8px;
+}
+.vsplit-invert .highlight {
+  width: 50%;
+  height: 100%;
+  background-color: blue;
+  border-radius: 0 0 8px 8px;
+}

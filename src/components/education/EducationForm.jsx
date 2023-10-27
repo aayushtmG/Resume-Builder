@@ -4,12 +4,12 @@ import FormButton from "../FormButton"
 import { useState } from "react"
 import CollapsedForm from "../CollapsedForm"
 
-export default function EducationForm({ list, onChange }) {
+export default function EducationForm({ setList, list, onChange }) {
   const [isFormOpen, setIsFormOpen] = useState(false)
   const [formId, setFormId] = useState(0)
   const [newForm, setNewForm] = useState(false)
   const { school, degree, educationLocation, educationEnd, educationStart } =
-    list[formId]
+    list[formId] || {}
   const toggleForm = () => {
     setIsFormOpen(!isFormOpen)
   }
@@ -39,9 +39,14 @@ export default function EducationForm({ list, onChange }) {
       cancelForm()
     }
   }
-  const deleteForm = () => {
-    alert("Deleted")
+
+  const deleteForm = (e) => {
+    const target = e.target.closest("form").dataset.id
+    list.splice(target, 1)
+    setList([...list])
+    setForm(0)
   }
+
   return (
     <div>
       <div className="accordion-group">
