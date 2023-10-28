@@ -1,44 +1,81 @@
 import "../styles/customize.css"
-export default function CustomizeEditor() {
+export default function CustomizeEditor({
+  accentColor,
+  setAccentColor,
+  setLayout,
+}) {
   return (
     <div className="editor-container">
-      <LayoutEditor></LayoutEditor>
-      <ColorSelection></ColorSelection>
+      <LayoutEditor
+        accentColor={accentColor}
+        setLayout={setLayout}
+      ></LayoutEditor>
+      <ColorSelection
+        accentColor={accentColor}
+        setAccentColor={setAccentColor}
+      ></ColorSelection>
     </div>
   )
 }
 
-function LayoutEditor() {
+function LayoutEditor({ accentColor, setLayout }) {
   return (
     <div>
       <form onSubmit={(e) => e.preventDefault()}>
         <h3 className="title">Layout</h3>
         <div className="layout-container">
-          <LayoutButton style={"vsplit"}></LayoutButton>
-          <LayoutButton style={"vsplit-invert"}></LayoutButton>
-          <LayoutButton style={"default"}></LayoutButton>
+          <LayoutButton
+            setLayout={setLayout}
+            layout={"vsplit"}
+            accentColor={accentColor}
+            position={"Left"}
+          ></LayoutButton>
+          <LayoutButton
+            setLayout={setLayout}
+            layout={"vsplit-reverse"}
+            accentColor={accentColor}
+            position={"Right"}
+          ></LayoutButton>
+          <LayoutButton
+            setLayout={setLayout}
+            layout={"default"}
+            accentColor={accentColor}
+            position={"Top"}
+          ></LayoutButton>
         </div>
       </form>
     </div>
   )
 }
 
-function LayoutButton({ style }) {
+function LayoutButton({ layout, accentColor, setLayout, position }) {
+  const style = {
+    backgroundColor: accentColor,
+  }
   const handleClick = () => {
-    alert(style)
+    setLayout(layout)
   }
   return (
-    <button className={`layout-btn ${style}`} onClick={handleClick}>
-      <div className="highlight"></div>
-    </button>
+    <div>
+      <button className={`layout-btn ${layout}`} onClick={handleClick}>
+        <div className="highlight" style={style}></div>
+      </button>
+      <p>{position}</p>
+    </div>
   )
 }
-function ColorSelection() {
+function ColorSelection({ accentColor, setAccentColor }) {
   return (
     <div>
       <form onSubmit={(e) => e.preventDefault()}>
         <h3 className="title">Color</h3>
-        <input type="color" onChange={(e) => alert(e.target.value)} />
+        <input
+          id="colorPicker"
+          className="color-picker"
+          type="color"
+          value={accentColor}
+          onChange={(e) => setAccentColor(e.target.value)}
+        />
       </form>
     </div>
   )

@@ -71,7 +71,7 @@ export default function ExperienceForm({ list, onChange, setList }) {
       {isFormOpen ? (
         <form className="form" data-id={formId}>
           <div className="input-group">
-            <label htmlFor="company">Experience</label>
+            <label htmlFor="company">Company</label>
             <input
               type="text"
               placeholder="Enter company name"

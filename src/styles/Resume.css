@@ -11,10 +11,6 @@
   max-width: 1000px;
 }
 
-.resume-top {
-  height: 30%;
-}
-
 .general-info-display {
   background-color: rgb(0, 0, 121);
   color: white;
@@ -26,12 +22,11 @@
   padding: 2rem 0px;
   gap: 30px;
 }
-
 .general-info-display div {
   display: flex;
 }
 .general-info-display h2 {
-  font-size: 2rem;
+  font-size: 2.2rem;
 }
 
 .general-info-item {
@@ -69,4 +64,49 @@
 }
 .right-block {
   min-width: 150px;
+}
+
+/* for vsplit layout*/
+.resume-container.vsplit {
+  display: flex;
+  flex-direction: row;
+}
+.resume-container.vsplit .general-info-display,
+.resume-container.vsplit-reverse .general-info-display {
+  min-width: 400px;
+  justify-content: start;
+  padding-top: 10rem;
+}
+.resume-container.vsplit .general-info-display h2,
+.resume-container.vsplit-reverse .general-info-display {
+  margin-bottom: 25px;
+}
+.resume-container.vsplit .general-info-display div,
+.resume-container.vsplit-reverse .general-info-display div {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-left: 0px;
+}
+.resume-container.vsplit .general-info-display .general-info-item,
+.resume-container.vsplit-reverse .general-info-display .general-info-item {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.resume-container.vsplit .resume-bottom,
+.resume-container.vsplit-reverse .resume-bottom {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  margin-top: 5rem;
+}
+
+/* for vsplit reverse layout*/
+
+.resume-container.vsplit-reverse {
+  display: flex;
+  flex-direction: row-reverse;
 }

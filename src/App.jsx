@@ -1,4 +1,5 @@
 import Controller from "./components/Controller"
+import DownloadCv from "./components/DownloadCv"
 import Editor from "./components/Editor"
 import Resume from "./components/Resume"
 import CustomizeEditor from "./components/CustomizeEditor"
@@ -11,6 +12,8 @@ function App() {
   const [generalInformation, setGeneralInformation] = useState(
     templateData.personalInfo
   )
+  const [layout, setLayout] = useState("vsplit-reverse")
+  const [accentColor, setAccentColor] = useState("#100A1E")
   const [education, setEducation] = useState(templateData.education)
   const [experience, setExperience] = useState(templateData.experience)
   const generalInformationInputHandler = (e) => {
@@ -49,6 +52,7 @@ function App() {
           <Controller setEditor={setEditor}></Controller>
           {editor == "Content" ? (
             <Editor
+              accentColor={accentColor}
               generalInformationInputHandler={generalInformationInputHandler}
               generalInformation={generalInformation}
               educationList={education}
@@ -59,14 +63,21 @@ function App() {
               setExperience={setExperience}
             />
           ) : (
-            <CustomizeEditor />
+            <CustomizeEditor
+              accentColor={accentColor}
+              setAccentColor={setAccentColor}
+              setLayout={setLayout}
+            />
           )}
+          <DownloadCv></DownloadCv>
         </div>
         <div className="right-part">
           <Resume
             generalInformation={generalInformation}
             educationList={education}
             experienceList={experience}
+            accentColor={accentColor}
+            layout={layout}
           ></Resume>
         </div>
       </main>

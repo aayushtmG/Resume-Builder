@@ -12,6 +12,7 @@ function Editor({
   experienceInputHandler,
   setExperience,
   setEducation,
+  accentColor,
 }) {
   return (
     <div className="editor-container">

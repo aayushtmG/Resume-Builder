@@ -1,6 +1,7 @@
 .editor-container {
   height: 100vh;
   overflow: scroll;
+  position: relative;
 }
 
 *::-webkit-scrollbar {

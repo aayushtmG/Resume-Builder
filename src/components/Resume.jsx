@@ -1,11 +1,18 @@
 import "../styles/Resume.css"
 import GeneralInformationDisplay from "./generalInformation/GeneralInformationDisplay"
 import ResumeDisplayBlock from "./education/ResumeDisplayBlock"
-function Resume({ generalInformation, educationList, experienceList }) {
+function Resume({
+  generalInformation,
+  accentColor,
+  educationList,
+  experienceList,
+  layout,
+}) {
   return (
-    <div className="resume-container">
+    <div className={`resume-container ${layout}`}>
       <div className="resume-top">
         <GeneralInformationDisplay
+          accentColor={accentColor}
           data={generalInformation}
         ></GeneralInformationDisplay>
       </div>
@@ -22,5 +29,4 @@ function Resume({ generalInformation, educationList, experienceList }) {
     </div>
   )
 }
-
 export default Resume
