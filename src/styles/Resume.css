@@ -8,9 +8,7 @@
   flex-direction: column;
   gap: 2rem;
   min-height: 900px;
-  max-width: 1000px;
 }
-
 .general-info-display {
   background-color: rgb(0, 0, 121);
   color: white;
@@ -65,11 +63,24 @@
 .right-block {
   min-width: 150px;
 }
-
+.display-list ul {
+  max-width: 500px;
+}
+.detail-block .left-block p,
+.detail-block .left-block h4 {
+  max-width: 500px;
+  word-wrap: break-word;
+}
 /* for vsplit layout*/
 .resume-container.vsplit {
   display: flex;
   flex-direction: row;
+}
+.resume-container.vsplit .detail-block .left-block p,
+.resume-container.vsplit-reverse .detail-block .left-block p,
+.resume-container.vsplit .detail-block .left-block h4,
+.resume-container.vsplit-reverse .detail-block .left-block h4 {
+  word-break: break-all;
 }
 .resume-container.vsplit .general-info-display,
 .resume-container.vsplit-reverse .general-info-display {
@@ -109,4 +120,19 @@
 .resume-container.vsplit-reverse {
   display: flex;
   flex-direction: row-reverse;
+}
+
+@media (min-width: 1800px) {
+  .resume-container h2 {
+    font-size: 2.5rem;
+  }
+  .resume-container p {
+    font-size: 1.2rem;
+  }
+  .resume-container h4 {
+    font-size: 1.4rem;
+  }
+  .general-info-display h2 {
+    font-size: 3rem;
+  }
 }

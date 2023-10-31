@@ -1,11 +1,15 @@
 import "../styles/index.css"
-export default function DownloadCv() {
+import { jsPDF } from "jspdf"
+import { useReactToPrint } from "react-to-print"
+export default function DownloadCv({ resumeRef }) {
+  // const downloadCv = useReactToPrint({
+  //   content: () => resumeRef,
+  // })
+  const downloadCv = () => {
+    alert("Still working on this one sorry!")
+  }
   return (
-    <button
-      className="download-btn"
-      type="button"
-      onClick={() => alert("Downloaded cv")}
-    >
+    <button className="download-btn" type="button" onClick={downloadCv}>
       Download Resume
     </button>
   )

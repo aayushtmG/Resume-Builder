@@ -48,3 +48,7 @@
   border: none;
   margin-left: 10px;
 }
+.layout-container div > p {
+  text-align: center;
+  margin-top: 5px;
+}

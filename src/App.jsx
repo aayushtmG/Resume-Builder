@@ -4,7 +4,7 @@ import Editor from "./components/Editor"
 import Resume from "./components/Resume"
 import CustomizeEditor from "./components/CustomizeEditor"
 import "./styles/index.css"
-import { useState } from "react"
+import { useEffect, useRef, useState } from "react"
 import templateData from "./templateData"
 
 function App() {
@@ -16,6 +16,7 @@ function App() {
   const [accentColor, setAccentColor] = useState("#100A1E")
   const [education, setEducation] = useState(templateData.education)
   const [experience, setExperience] = useState(templateData.experience)
+  const [resumeRef, setResumeRef] = useState()
   const generalInformationInputHandler = (e) => {
     setGeneralInformation({
       ...generalInformation,
@@ -33,7 +34,6 @@ function App() {
       })
     )
   }
-
   const experienceInputHandler = (e) => {
     const key = e.target.id
     const value = e.target.value
@@ -69,10 +69,11 @@ function App() {
               setLayout={setLayout}
             />
           )}
-          <DownloadCv></DownloadCv>
+          <DownloadCv resumeRef={resumeRef}></DownloadCv>
         </div>
         <div className="right-part">
           <Resume
+            setResumeRef={setResumeRef}
             generalInformation={generalInformation}
             educationList={education}
             experienceList={experience}

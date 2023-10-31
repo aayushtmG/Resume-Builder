@@ -1,15 +1,19 @@
 import "../styles/Resume.css"
 import GeneralInformationDisplay from "./generalInformation/GeneralInformationDisplay"
 import ResumeDisplayBlock from "./education/ResumeDisplayBlock"
+import { useRef } from "react"
 function Resume({
   generalInformation,
   accentColor,
   educationList,
   experienceList,
   layout,
+  setResumeRef,
 }) {
+  const reference = useRef(null)
+  setResumeRef(reference.current)
   return (
-    <div className={`resume-container ${layout}`}>
+    <div ref={reference} id="resume" className={`resume-container ${layout}`}>
       <div className="resume-top">
         <GeneralInformationDisplay
           accentColor={accentColor}
