@@ -32,8 +32,7 @@ main {
   transition: all 0.2s ease-out;
 }
 .download-btn:hover {
-  /* background-color: rgb(3, 3, 247); */
-  background-color: rgb(245, 3, 247);
+  background-color: rgb(3, 3, 247);
 }
 .left-part {
   position: relative;
